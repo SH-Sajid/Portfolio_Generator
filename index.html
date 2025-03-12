@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Portfolio Generator</h1>
+            <p>Create and download your professional portfolio in minutes</p>
+        </header>
+
+        <!-- Authentication Forms -->
+        <div id="auth-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+            
+            <div id="login-form" class="auth-form active">
+                <h2>Login</h2>
+                <form id="login">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+            
+            <div id="register-form" class="auth-form">
+                <h2>Register</h2>
+                <form id="register">
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <p id="password-error" style="color: red; display: none;">Passwords do not match!</p>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Portfolio Form -->
+        <div id="portfolio-container" class="hidden">
+            <!-- Logout Button -->
+            <div class="logout-container">
+                <button id="logout-btn" class="btn-logout">Logout</button>
+            </div>
+            
+            <h2>Create Your Portfolio</h2>
+            <form id="portfolio-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Information</label>
+                        <input type="text" id="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Upload Photo</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
+                    <!-- Photo Preview -->
+                    <img id="photo-preview" src="" alt="Photo Preview" style="display: none; width: 100px; height: 100px; margin-top: 10px; border-radius: 5px;">
+                    <div class="form-group">
+                        <label for="bio">Short Bio</label>
+                        <textarea id="bio" rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="form-group">
+                        <label for="softSkills">Soft Skills</label>
+                        <input type="text" id="softSkills" placeholder="E.g. Communication, Leadership">
+                    </div>
+                    <div class="form-group">
+                        <label for="technicalSkills">Technical Skills</label>
+                        <input type="text" id="technicalSkills" placeholder="E.g. JavaScript, Python">
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="form-section" id="education-section">
+                    <h3>Education (Optional)</h3>
+                    <div class="form-group">
+                        <label for="institution">Institution</label>
+                        <input type="text" id="institution" class="institution" placeholder="Institution">
+                    </div>
+                    <div class="form-group">
+                        <label for="degree">Degree</label>
+                        <input type="text" id="degree" class="degree" placeholder="Degree">
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year</label>
+                        <input type="text" id="year" class="year" placeholder="Year">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Grade/GPA</label>
+                        <input type="text" id="grade" class="grade" placeholder="Grade/GPA">
+                    </div>
+                    <button type="button" class="btn btn-add" onclick="addEducation()">Add More Education</button>
+                </div>
+
+                <!-- Work Experience Section -->
+                <div class="form-section" id="work-experience-section">
+                    <h3>Work Experience</h3>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" class="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration</label>
+                        <input type="text" id="duration" class="duration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="responsibilities">Job Responsibilities</label>
+                        <textarea id="responsibilities" class="responsibilities" rows="3" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-add" onclick="addWorkExperience()">Add More Work Experience</button>
+                </div>
+
+                <!-- Project Section -->
+                <div class="form-section" id="project-section">
+                    <h3>Projects/Publications (Optional)</h3>
+                    <div class="form-group">
+                        <label for="projectName">Project Name</label>
+                        <input type="text" id="projectName" class="projectName" placeholder="Project Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" class="projectDescription" rows="3" placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectLink">Link (Optional)</label>
+                        <input type="text" id="projectLink" class="projectLink" placeholder="Link">
+                    </div>
+                    <button type="button" class="btn btn-add" onclick="addProject()">Add More Projects</button>
+                </div>
+
+                <button type="submit" class="btn">Generate Portfolio PDF</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
