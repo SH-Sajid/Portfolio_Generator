@@ -1,0 +1,479 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Added transition for hover */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%; 
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #3498db;
+    transform: translateY(-3px);
+}
+
+
+
+.btn-add {
+    background-color: #3498db;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.btn-add:hover {
+    background-color: #2980b9; ;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Authentication */
+#auth-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Transitions for Login and Register Forms */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    position: relative;
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #7f8c8d;
+    transition: all 0.3s;
+    text-align: center;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Adding hover effect on tabs */
+.tab-btn:hover {
+    color: #3498db;
+    transform: scale(1.05);
+}
+
+.auth-form {
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.auth-form.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.auth-form h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Portfolio Section */
+#portfolio-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#portfolio-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+/* Focus state for inputs */
+input:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Hover effect for all form groups */
+.form-group:hover {
+    background-color: #ecf0f1; /* Light gray background on hover */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); /* Soft shadow effect */
+}
+
+/* File Upload Input */
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+input[type="file"]:hover {
+    border-color: #3498db;
+}
+
+/* Change border color of input and textareas on hover */
+.form-group:hover input[type="text"],
+.form-group:hover input[type="email"],
+.form-group:hover textarea {
+    border-color: #3498db; /* Blue border on hover for inputs and textareas */
+}
+
+/* Buttons */
+.btn:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+#auth-container:hover, #portfolio-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Feedback Messages */
+.form-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.form-message.success {
+    background-color: #2980b9; ;
+}
+
+.form-message.error {
+    background-color: #e74c3c;
+}
+
+/* Add More Button */
+.add-more-btn {
+    background-color: #3498db; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.add-more-btn:hover {
+    background-color: #2980b9; 
+    transform: translateY(-3px);
+}
+
+/* Password Visibility Toggle */
+#login-password, #register-password, #confirm-password {
+    position: relative; /* Make the parent input relative to position the icon inside */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Center the icon vertically inside the input field */
+    cursor: pointer;
+    font-size: 18px;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+}
+
+/* Optional: Change icon color on hover */
+.toggle-password:hover {
+    color: #3498db; /* Add hover effect for the eye icon */
+}
+/* Add these styles to your existing CSS */
+
+/* Logout Button Styles */
+.logout-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.btn-logout {
+    background-color:#3498db;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #3498db;
+    transform: translateY(-2px);
+}
+
+/* Remove Button Styles */
+.btn-remove {
+    background-color: #3498db;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-remove:hover {
+    background-color: #3498db;
+    transform: translateY(-2px);
+}
+
+/* Add this to style the item headers and action buttons */
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-header h4 {
+    margin: 0;
+}
+
+/* Add some space between items */
+.education-item, .work-item, .project-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-group input, .form-group textarea {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.2rem;
+    }
+
+    #portfolio-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.2rem;
+    }
+
+    #portfolio-container {
+        margin: 15px auto;
+    }
+
+    .form-section h3 {
+        font-size: 16px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group input, .form-group textarea {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-group input, .form-group textarea {
+        font-size: 13px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+
+    .tab-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #portfolio-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+    }
+}
